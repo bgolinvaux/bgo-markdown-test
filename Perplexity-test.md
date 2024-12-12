@@ -25,12 +25,16 @@ Plain text
 
 ## Section 3: Links and References
 [Link text](https://example.com)
+
 [Reference link][ref1]
+
 [ref1]: https://example.com
 
 ## Section 4: Images
 ![Alt text](https://picsum.photos/536/354)
+
 ![Referenced image][img1]
+
 [img1]: https://picsum.photos/536/352
 
 ## Section 5: Blockquotes
