@@ -273,6 +273,89 @@ gantt
     Add another diagram to demo page    :48h
 ```
 
+## Mermaid Class Diagram
+
+```mermaid
+
+classDiagram
+
+class Name {
+&lt;&lt;Interface&gt;&gt;
+String
+}
+
+class School {
+Name: Name
+Teachers: List Teacher
+}
+
+School --* Name
+School --* Teacher
+
+class Person {
+Id: Number
+Name: Name
+}
+
+
+Person --* Name
+
+class Teacher {
+Subject: Subject
+Id: Number
+Name: Name
+}
+Teacher --|> Person
+Teacher --* Subject
+
+Teacher --* Name
+
+class Sudent {
+Subjects: List Subject
+FirstReport: ReportCardResult
+SecondReport: ReportCardResult
+ThirdReport: ReportCardResult
+Id: Number
+Name: Name
+}
+Sudent --|> Person
+Sudent --* Subject
+Sudent --* ReportCardResult
+Sudent --* ReportCardResult
+Sudent --* ReportCardResult
+
+Sudent --* Name
+
+class Subject {
+Name: Name
+Description: String
+}
+
+Subject --* Name
+
+
+class ReportCard {
+Results: List ReportCardResult
+}
+
+ReportCard --* ReportCardResult
+
+class ReportCardResult {
+Subject: Subject
+Grade: Number
+RepeatGrade: Number
+}
+
+ReportCardResult --* Subject
+
+
+
+class Other {
+Something: String
+}
+```
+
+
 
 ## STL
 
