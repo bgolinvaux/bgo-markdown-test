@@ -126,8 +126,7 @@ graph TD;
 
 ## Section 19: Mermaid Sequence Diagrams
 
-```mermaid
-
+```mermaid 
 %% A complex Mermaid sequence diagram showcasing multiple participants, synchronous and asynchronous messages,
 %% as well as conditions, loops, and notes. This diagram should be compatible with GitHub flavored markdown.
 
@@ -149,16 +148,18 @@ sequenceDiagram
     alt User found
         DB-->>WS: User record found
         WS->>WS: Verify password hash
-        opt Password correct
+        
+        alt Password correct
             WS-->>B: Send session token & user dashboard data
             B-->>U: Render dashboard
         else Password incorrect
-            WS-->>B: Return error message "Invalid password"
+            WS-->>B: Return error "Invalid password"
             B-->>U: Display error
         end
+        
     else User not found
         DB-->>WS: No user record
-        WS-->>B: Return error message "User not found"
+        WS-->>B: Return error "User not found"
         B-->>U: Display error
     end
 
@@ -184,7 +185,6 @@ sequenceDiagram
 
     WS-->>B: Return "Purchase Complete"
     B-->>U: Display "Thank you for your purchase!"
-
 
 ```
 
