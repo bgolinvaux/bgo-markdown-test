@@ -81,6 +81,10 @@ $$
 \sum_{i=1}^{n} x_i = \frac{n(n+1)}{2}
 $$
 
+$$
+f(x) = \int_{a}^{b} \left( e^{-x^2} \cdot \cos(\pi x) \right) dx + \sum_{n=1}^{\infty} \frac{1}{n^2 + 1}
+$$
+
 
 ## Section 13: Comments
 [//]: # (This is a comment that won't be rendered)
