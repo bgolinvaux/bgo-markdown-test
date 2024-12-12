@@ -80,7 +80,9 @@ Term 2
 
 ## Section 12: Mathematics
 Inline math: $E = mc^2$
+
 Block math:
+
 $$
 \sum_{i=1}^{n} x_i = \frac{n(n+1)}{2}
 $$
