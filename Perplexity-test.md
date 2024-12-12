@@ -29,9 +29,9 @@ Plain text
 [ref1]: https://example.com
 
 ## Section 4: Images
-![Alt text](image.jpg)
+![Alt text](https://picsum.photos/536/354)
 ![Referenced image][img1]
-[img1]: image2.jpg
+[img1]: https://picsum.photos/536/352
 
 ## Section 5: Blockquotes
 > Single line quote
