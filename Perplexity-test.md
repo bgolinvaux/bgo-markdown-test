@@ -115,7 +115,7 @@ Centered text
 ## Section 17: Emojis
 :smile: :heart: :thumbsup:
 
-## Section 18: Diagrams (Mermaid)
+## Section 18: Mermaid Graph Diagrams
 ```mermaid
 graph TD;
     A-->B;
@@ -124,7 +124,106 @@ graph TD;
     C-->D;
 ```
 
-## Section 19: STL
+## Section 19: Mermaid Sequence Diagrams
+
+```mermaid
+
+%% A complex Mermaid sequence diagram showcasing multiple participants, synchronous and asynchronous messages,
+%% as well as conditions, loops, and notes. This diagram should be compatible with GitHub flavored markdown.
+
+sequenceDiagram
+    autonumber
+    
+    participant U as User
+    participant B as Browser
+    participant WS as Web Server
+    participant DB as Database
+    participant PG as Payment Gateway
+    participant ES as Email Service
+
+    Note over U,B: User attempts to log in through the browser
+    U->>B: Enter credentials (username & password)
+    B->>WS: POST /login with credentials
+    WS->>DB: Validate user against DB
+    
+    alt User found
+        DB-->>WS: User record found
+        WS->>WS: Verify password hash
+        opt Password correct
+            WS-->>B: Send session token & user dashboard data
+            B-->>U: Render dashboard
+        else Password incorrect
+            WS-->>B: Return error message "Invalid password"
+            B-->>U: Display error
+        end
+    else User not found
+        DB-->>WS: No user record
+        WS-->>B: Return error message "User not found"
+        B-->>U: Display error
+    end
+
+    Note over WS,PG: After successful login, user initiates a purchase
+    U->>B: Click "Buy Now"
+    B->>WS: POST /purchase
+    WS->>PG: Initiate payment (async)
+    par Payment Processing
+        PG-->>WS: Payment success confirmation
+    and Email Notification
+        WS->>ES: Send order confirmation email (async)
+        ES-->>WS: Email queued for delivery
+    end
+    
+    loop Retry until email delivered or timeout
+        ES->>ES: Check email queue status
+        alt Email sent
+            ES-->>WS: Delivery confirmed
+        else Still queued
+            ES-->>ES: Wait & retry
+        end
+    end
+
+    WS-->>B: Return "Purchase Complete"
+    B-->>U: Display "Thank you for your purchase!"
+
+
+```
+
+## Section 20: Mermaid Graph Diagrams 2
+
+```mermaid
+
+%% This is a complex UML-style collaboration diagram using Mermaid syntax.
+%% It shows multiple components (objects) collaborating through messages.
+%% Messages are numbered to indicate the sequence of interactions.
+
+graph LR
+
+    %% Define nodes (objects/participants)
+    U[User]
+    B[Browser]
+    WS[Web Server]
+    DB[Database]
+    PG[Payment Gateway]
+    ES[Email Service]
+
+    %% Define interactions (edges with message numbers and actions)
+    U -->|1: Initiate login| B
+    B -->|2: Send credentials| WS
+    WS -->|3: Validate user data| DB
+    DB -->|4: Return user record| WS
+    WS -->|5: Check password hash| WS
+    WS -->|6: Return session token| B
+    B -->|7: Render user dashboard| U
+
+    %% Additional collaboration steps
+    WS -->|8: Initiate payment request| PG
+    PG -->|9: Confirm payment status| WS
+    WS -->|10: Send confirmation email| ES
+    ES -->|11: Deliver email notification| U
+
+```
+
+## Section 21: STL
 
 ```stl
 solid cube_corner
